@@ -1,35 +1,27 @@
 #include <iostream>
+#define GLFW_INCLUDE_VULKAN
 #include <glfw3.h>
-#include "createWindow.hpp"
+#include <vector>
 
 namespace GameEngine {
-
     GLFWwindow *window;
 
-    const uint16_t WIDTH = 800;
-    const uint16_t HEIGHT = 600;
+    const uint32_t WIDTH = 800;
+    const uint32_t HEIGHT = 600;
 
-    static class createWindow {
-    public:
-        void initWindow() {
+    void initWindow() {
 
-            glfwInit();
+        glfwInit();
 
-            glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-            glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
-            window = glfwCreateWindow(HEIGHT, WIDTH, "My Window, Wow!", nullptr, nullptr);
+        window = glfwCreateWindow(HEIGHT, WIDTH, "My Window, Wow!", nullptr, nullptr);
+    }
+
+    static void mainLoop() {
+        while (!glfwWindowShouldClose(window)) {
+            glfwPollEvents();
         }
-
-        static void mainLoop() {
-            while (!glfwWindowShouldClose(window)) {
-                glfwPollEvents();
-            }
-        }
-
-        static void cleanup() {
-            glfwDestroyWindow(window);
-            glfwTerminate();
-        }
-    };
+    }
 }

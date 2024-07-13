@@ -1,27 +1,30 @@
-#include <iostream>
 #include "createWindow.cpp"
-
-#define GLFW_INCLUDE_VULKAN
+#include "createInstance.cpp"
+#include <vector>
 
 using std::exception, std::cerr;
 
 namespace GameEngine {
+    
+
     class runApplication {
     public:
+        static void cleanup() {
+            vkDestroyInstance(instance, nullptr);
+            glfwDestroyWindow(window);
+            glfwTerminate();
+        }
+
         void run() {
             initVulkan();
-            GameEngine::createWindow::mainLoop();
-            createWindow::cleanup();
+            mainLoop();
+            cleanup();
         }
 
-    private:
-        void initVulkan() {
-
-        }
     };
 
     int main() {
-        runApplication app;
+        GameEngine::runApplication app;
 
         try {
             app.run();
