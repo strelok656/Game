@@ -2,3 +2,10 @@ x64/
 MyGameWindows.vcxproj
 MyGameWindows.vcxproj.filters
 MyGameWindows.vcxproj.user
+/MyGame.vcxproj.filters
+/MyGame.vcxproj.user
+/MyGame.vcxproj
+/MyGame.sln
+/Libraries
+/Debug
+/.vs
